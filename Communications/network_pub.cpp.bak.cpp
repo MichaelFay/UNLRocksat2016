@@ -17,6 +17,7 @@ Last Tested:
 /******************************* Includes ************************************/
 #include "network.hpp"
 #include "primative.hpp"
+#include "../Definitions/primative.hpp"
 /*********************** Memory Constants ************************************/
 extern uint8   device_id;       //your device ID
 

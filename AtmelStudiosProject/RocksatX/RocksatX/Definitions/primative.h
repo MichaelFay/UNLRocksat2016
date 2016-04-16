@@ -14,8 +14,8 @@ Last Tested:
 
 
 
-#ifndef __PRIMATIVE_H__
-#define __PRIMATIVE_H__ 
+#ifndef __PRIMITIVE_H__
+#define __PRIMITIVE_H__ 
 
 
 /******************************* Includes ************************************/
@@ -53,4 +53,3 @@ Last Tested:
 
 /***************** Global Variables*******************************************/
 
-#endif

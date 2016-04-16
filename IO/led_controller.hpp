@@ -12,39 +12,25 @@ Tested By:
 Last Tested:
 ******************************************************************************/
 
-#ifndef __NETWORK_IO_H__
-#define __NETWORK_IO_H__
+#ifndef __LED_CONNTROLLER_H__
+#define __LED_CONNTROLLER_H__ 
 
 /******************************* Includes ************************************/
 #include "bsp.h"
-#include "packet_def.hpp"
-#include "primative.hpp"
 /*********************** Memory Constants ************************************/
 
 /***************** Macro's and Definitions************************************/
 
 /*******************Global Variables******************************************/																			//network size
 
-boolean _byte_full; 
-boolean _packet_full;
-boolean _crc_check_pass;
-uint8 	_data_byte;
-IMP 	_data_packet;
-extern IMP * rx_buffer; 
-extern IMP * tx_buffer; 
 
 /*********************** Function Proto's ************************************/
 
-class network_io
+class led_controller
 {
 public:
-	//network_io();
-	//~network_io();
-	void init();
-	void sendPkt(IMP * pkt);
-	void startRecieve();
-	void stopRecieve();
-	void setRecieveCallback(); 
+	void setLedOn(void * pin_number);
+	void setLedOff(void * pin_number);
 
 private: 
 	void writeByte(void * byte);

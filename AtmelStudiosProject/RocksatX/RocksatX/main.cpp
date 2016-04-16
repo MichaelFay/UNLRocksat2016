@@ -12,47 +12,34 @@ Tested By:
 Last Tested:
 ******************************************************************************/
 
-#ifndef __NETWORK_IO_H__
-#define __NETWORK_IO_H__
+
+#define __ATMEGA_2560__
+
 
 /******************************* Includes ************************************/
 #include "bsp.h"
 #include "packet_def.hpp"
 #include "primative.hpp"
+
 /*********************** Memory Constants ************************************/
 
 /***************** Macro's and Definitions************************************/
 
-/*******************Global Variables******************************************/																			//network size
-
-boolean _byte_full; 
-boolean _packet_full;
-boolean _crc_check_pass;
-uint8 	_data_byte;
-IMP 	_data_packet;
-extern IMP * rx_buffer; 
-extern IMP * tx_buffer; 
+/*******************Global Variables******************************************/																		
 
 /*********************** Function Proto's ************************************/
 
-class network_io
+
+/**********************Functions*********************************************/
+
+
+int main()
 {
-public:
-	//network_io();
-	//~network_io();
-	void init();
-	void sendPkt(IMP * pkt);
-	void startRecieve();
-	void stopRecieve();
-	void setRecieveCallback(); 
+	
+	
+	return 0;
+}
 
-private: 
-	void writeByte(void * byte);
-	void networkWritePacket(IMP * pkt);
-	void bitRecieve();
-};
-
-#endif //protect againest multiple definitions
 /*********************** Note's **********************************************/
 /*
 
