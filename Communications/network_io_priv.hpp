@@ -28,7 +28,8 @@ Last Tested:
 boolean _byte_full; 
 boolean _packet_full;
 boolean _crc_check_pass;
-uint8 	_data_byte;
+uint8 	_rx_data_byte;
+uint8 	_bits_recieved; 
 IMP 	_data_packet;
 extern IMP * rx_buffer; 
 extern IMP * tx_buffer; 
@@ -45,8 +46,10 @@ public:
 	void startRecieve();
 	void stopRecieve();
 	void setRecieveCallback(); 
+	void sendPktWait(uint8 delay);
 
 private: 
+
 	void writeByte(void * byte);
 	void networkWritePacket(IMP * pkt);
 	void bitRecieve();

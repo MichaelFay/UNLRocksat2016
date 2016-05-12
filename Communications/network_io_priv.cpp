@@ -1,5 +1,11 @@
+#include "network_io_priv.hpp"
 
 
+//Function to init packet
+void init()
+{
+
+}
 
 //function to write a packet to the wire
 void networkWritePacket(IMP * pkt)
@@ -47,4 +53,33 @@ void writeByte(void * byte)
 
 		}
 	}
+
+	//TODO: Turn ports to input pins. This will allow us to read the pins 
+	// 		and not burn the MCU's pins
+
 }
+
+void bitRecieve()
+{
+	uint8 tmp_comm_line_0; 
+	uint8 tmp_comm_line_1;
+
+	_bits_recieved ++;
+
+	tmp_comm_line_0 = ( COMM_BANK_READ & ( 1 << data0 ) ); 
+	tmp_comm_line_1 = ( COMM_BANK_READ & ( 1 << data1 ) );
+
+	//Logical 1 has been transmitted! Good nothing fucking broke
+	if(tmp_comm_line_0 == TRUE && tmp_comm_line_1 == false)
+	{
+
+	}
+}
+
+
+
+
+
+
+
+

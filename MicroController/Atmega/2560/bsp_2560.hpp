@@ -14,6 +14,7 @@
 
 
 #define COMM_BANK PORTL
+#define COMM_BANK_READ PORTL
 
 #define COM_1 PIN1
 #define COM_2 PIN2
