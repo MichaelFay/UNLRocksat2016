@@ -37,7 +37,16 @@ Developed By: Michael Fay for Rocksat-X 2016
 	#define GET_DEVICE_NAME 0x06 // Used to for getting device name from a node
 #endif
 
-// NERIC packet for m2m communication
+#ifndef START_BYTE
+	START_BYTE 0xEA
+#endif 
+
+#ifndef END_BYTE
+	END_BYTE 0xFF
+#endif 
+
+
+// NERI packet for m2m communication
 typedef struct
 {
 	uint8_t reciever_id; // Reciever I2C ID
@@ -47,11 +56,11 @@ typedef struct
 	void  * data;        // pointer to the data to be sent < 255
 	uint8_t crc;         // CRC check sum
 
-} IMP;
+} NERI;
 
 
 #endif  
-	//protection againest multi_import problems
+	//protection againest multi_NERIort problems
 
 
 /*********************** Function Proto's ************************************/

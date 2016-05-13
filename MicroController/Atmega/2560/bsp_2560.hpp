@@ -16,6 +16,8 @@
 #define COMM_BANK PORTL
 #define COMM_BANK_READ PORTL
 
+#define COMM_DDR DDRL
+
 #define COM_1 PIN1
 #define COM_2 PIN2
 #define COM_3 PIN3
@@ -25,6 +27,13 @@
 #define COM_7 PIN7
 #define COM_8 PIN8
 
+
+#define NERI_LINE_0
+#define NERI_LINE_1 
+
+#define INTERRUPTS_ON()  sei()
+
+#define INTERRUPTS_OFF() cli()
 
 //TODO: Define TX and RX buffer max
 

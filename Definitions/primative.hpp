@@ -47,6 +47,7 @@ Last Tested:
 #define low false
 
 
+typedef void (*callback)(void);
 
 
 /*********************** Function Proto's ************************************/

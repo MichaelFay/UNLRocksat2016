@@ -34,7 +34,7 @@ public:
 
 private: 
 	void writeByte(void * byte);
-	void networkWritePacket(IMP * pkt);
+	void networkWritePacket(NERI * pkt);
 	void bitRecieve();
 };
 

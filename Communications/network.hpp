@@ -54,9 +54,6 @@ extern uint8_t   network_size ;  				//size of network device array aka
 
 extern uint8    data_clock_line;	//Pin that the data pins reside on. i.e. P1
 
-extern uint8   	data0;			//data line 0
-extern uint8   	data1;			//data line 1 -- For differential signaling
-
 extern int8	device_enable;  // device enable pin. If this pin is not high ignore all requests.
 							//if master node define device id = -1
 

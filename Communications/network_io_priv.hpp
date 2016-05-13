@@ -36,18 +36,19 @@ uint8 	_pkt_data_overflow;
 uint8 	_rx_data_byte;
 uint8 	_bits_recieved; 
 uint8 	_pkt_location; 
-
+uint8 	_network_type; 
 uint8  	_data_stream_counter; 
 
+callback _rx_callback_ftn;
 
-IMP 	_data_packet;
-
-
-
+NERI 	_data_packet;
 
 
-extern  IMP    rx_pkt_buffer[RX_BUFFER_MAX]; 
-extern  IMP    tx_pkt_buffer[TX_BUFFER_MAX]; 
+
+
+
+extern  NERI    rx_pkt_buffer[RX_BUFFER_MAX]; 
+extern  NERI    tx_pkt_buffer[TX_BUFFER_MAX]; 
 
 extern 	uint8  rx_data_buffer[TX_DATA_BUFFER_MAX];
 extern 	uint8  tx_data_buffer[RX_DATA_BUFFER_MAX];
@@ -69,19 +70,20 @@ public:
 	//network_io();
 	//~network_io();
 	void init();
-	void sendPkt(IMP * pkt);
+	void sendPkt(NERI * pkt);
+
 	void startRecieve();
 	void stopRecieve();
-	void setRecieveCallback(); 
-	void sendPktWait(uint8 delay);
+	void setPktRecieveCallback(); 
+	//void sendPktWait(uint8 delay);
 
 private: 
 
 	void writeByte(void * byte);
-	void networkWritePacket(IMP * pkt);
+	void wireWrite(NERI * pkt);
 	void processPacket(); 
 	void processDataStream();
-	void bitRecieve();
+	void wirebitRecieve();
 };
 
 #endif //protect againest multiple definitions

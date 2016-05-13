@@ -109,7 +109,7 @@ void getNetworkNodes(void * data, uint8 ptr_size)
 		uint8 device_id; 
 		uint8 i; 
 
-		IMP tmp_pkt; 
+		NERI tmp_pkt; 
 		uint8 tmp_data;
 
 		//setting defaults for the packet
@@ -156,7 +156,7 @@ void ping(boolean success, uint8 * reciever_id_parm, ...)
 	uint8 device_id; 
 	uint8 i; 
 
-	IMP tmp_pkt; 
+	NERI tmp_pkt; 
 	uint8 tmp_data;
 	tmp_data = device_id;
 
