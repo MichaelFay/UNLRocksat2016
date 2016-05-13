@@ -26,6 +26,10 @@
 #define COM_8 PIN8
 
 
+//TODO: Define TX and RX buffer max
+
+#define MAX_RX_DATA_STREAM 24
+
 #define LED_SHIFT_PORT PORTA
 
 #define LED_SHIFT_DATA 	PIN3
