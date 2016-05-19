@@ -1,6 +1,6 @@
 #include "network_io_priv.hpp"
 
-
+#include "cc1101.h"
 //Function to init packet
 void init(uint8 * network_type_param)
 {
@@ -39,7 +39,8 @@ void sendPkt(NERI * pkt)
 	switch(_network_type)
 	{
 		//write to wire if network type is 0
-		case 0: wireWrite(pkt); break; 
+		case 0: wireWrite(pkt); break;
+		//case CC1101: cc1101Write(); break; 
 		default: break; 
 
 	}	
@@ -115,6 +116,7 @@ void wireWriteByte(void * byte)
 
 }
 
+//function to write
 void wireBitRecieve()
 {
 	uint8 tmp_comm_line_0; 
