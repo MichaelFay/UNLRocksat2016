@@ -4,7 +4,7 @@
 
 Developed By: Michael Fay for Rocksat-X 2016
 
-File Name: primative.c
+File Name:
 Last revised:
 Version Number:
 
@@ -12,45 +12,37 @@ Tested By:
 Last Tested:
 ******************************************************************************/
 
-
-
-#ifndef __PRIMATIVE_H__
-#define __PRIMATIVE_H__ 
-
+#ifndef __LED_CONNTROLLER_H__
+#define __LED_CONNTROLLER_H__ 
 
 /******************************* Includes ************************************/
-#include <stdint.h>
-
+#include "bsp.h"
 /*********************** Memory Constants ************************************/
 
 /***************** Macro's and Definitions************************************/
 
-#define int8 int8_t
-#define int16 int16_t
-#define int32 int32_t
-
-#define uint8 uint8_t 
-#define uint16 uint16_t
-#define uint32 uint32_t
-
-#define boolean bool 
-#define TRUE 1
-#define true 1
-
-#define FALSE 0
-#define false 0
-
-#define HIGH TRUE
-#define high true 
-
-#define LOW FALSE
-#define low false
-
-
+/*******************Global Variables******************************************/																			//network size
 
 
 /*********************** Function Proto's ************************************/
 
-/***************** Global Variables*******************************************/
+class led_controller
+{
+public:
+	void setLedOn(void * pin_number);
+	void setLedOff(void * pin_number);
 
-#endif
+private: 
+	void writeByte(void * byte);
+	void networkWritePacket(IMP * pkt);
+	void bitRecieve();
+};
+
+#endif //protect againest multiple definitions
+/*********************** Note's **********************************************/
+/*
+
+
+
+
+*/
