@@ -16,49 +16,32 @@ Last Tested:
 
 /******************************* Includes ************************************/
 #include "network.hpp"
-#include "primative.hpp"
 /*********************** Memory Constants ************************************/
-extern uint8   	device_id;       //your device ID
-
-extern uint8   	master_id;    		//master id
-
-extern uint8 *  network_devices;	//network devies array
-
-extern uint8 	network_size;  	//size of network device array aka
-									//network size
-
-extern uint8    data_pin_bank;	//Pin bank that the data pins reside on. i.e. P1
-
-extern uint8   	data0;			//data line 0
-extern uint8   	data1;			//data line 1 -- For differential signaling
-
-extern int8	device_enable;  // device enable pin. If this pin is not high ignore all requests.
-									//if master node define device id = -1
-
-extern uint8   	mm_clock; 	//m2m clock signal for master-master communication 
-
 
 /***************** Macro's and Definitions************************************/
+
+extern network_io network; 
 
 /*********************** Function Proto's ************************************/
 
 /***************** Global Variables*******************************************/
 
-static boolean        known_Master;   //private variable to see if we have a known master on the network. 
+ boolean        _known_Master;   //private variable to see if we have a known master on the network. 
 
 //Function to set and read on device reg's
-void readMemLocation(uint8 reg, void * data)
+void readMemLocation(void * reg, void * data)
 {
-	* data = &reg;
+	//* data = &reg;
+	//* reg = * data; 
 }
 
 //Function to define network master
 void defineNetMaster(uint8 * status)
 {
 	//see if there is already a master assigned. If so connect to it.
-	if(known_Master == TRUE)
+	if(_known_Master == TRUE)
 	{
-		*status = known_master; 
+		*status = _known_Master; 
 	}
 	//If network doesn't have master, attempt to build network tree.
 	else 
@@ -93,7 +76,7 @@ void syncToMaster(uint8 * status)
     do
 	{
 
-	}while(loop_temp)
+	}while(loop_temp);
 	// If master never responds go into async and log the time of the event and an error message
 
 
@@ -126,7 +109,7 @@ void getNetworkNodes(void * data, uint8 ptr_size)
 		uint8 device_id; 
 		uint8 i; 
 
-		IMP tmp_pkt; 
+		NERI tmp_pkt; 
 		uint8 tmp_data;
 
 		//setting defaults for the packet
@@ -141,7 +124,7 @@ void getNetworkNodes(void * data, uint8 ptr_size)
 		{
 			tmp_pkt.reciever_id = i; 
 			
-			if(recieved_buffer == 0)
+			if(recieved_buffer_size == 0)
 			{
 				network_devices[i] = false; 
 			}
@@ -173,11 +156,11 @@ void ping(boolean success, uint8 * reciever_id_parm, ...)
 	uint8 device_id; 
 	uint8 i; 
 
-	IMP tmp_pkt; 
+	NERI tmp_pkt; 
 	uint8 tmp_data;
 	tmp_data = device_id;
 
-	tmp_pkt.reciever_id =   reciever_id_parm;
+	tmp_pkt.reciever_id =   * reciever_id_parm;
 	tmp_pkt.sender_id 	= 	device_id;
 	tmp_pkt.command		= 	AWK; 
 	tmp_pkt.data_len	= 	1;
@@ -185,57 +168,9 @@ void ping(boolean success, uint8 * reciever_id_parm, ...)
 	tmp_pkt.crc			=	0xFF;
 
 
-	network_write_pkt(& tmp_pkt); 
+	network.sendPkt(& tmp_pkt); 
 }
 
-
-//function to write a packet to the wire
-void network_write_pkt(IMP * pkt)
-{
-	uint8 i = 0;
-
-	write_byte(START_BYTE);
-
-	write_byte(& pkt.reciever_id);
-	write_byte(& pkt.sender_id);
-	write_byte(& pkt.command);
-
-	for(i = 0; i < pkt.data_len; i++)
-	{
-		write_byte(&(data[i]));
-	}
-
-	write_byte(& tmp_pkt.crc);
-	write_byte(END_BTYE);
-}
-
-//function to write a singular byte
-void write_byte(void * byte)
-{
-	//loop through each device_id bit
-	for(i = 0; i < 8; i++)
-	{
-		tmp_byte = (*uint8) & ~(1 << i);	// We want to isolate a singular bit for transmission
-
-		if(tmp_byte = 0) // if 0 set d0  low and d1  high
-		{
-			BANK &= ~(1 << data0 | 1 << data1);
-			BANK |=  (0 << data0 | 1 << data1);
-		}
-		else if(tmp_byte = 1)	// if 1 set d0  high and d1  low
-		{
-			BANK &= ~(1 << data0 | 1 << data1);
-			BANK |=  (1 << data0 | 0 << data1);
-
-		}
-		else 						// if neither set d0  low and d1  low
-		{
-			BANK &= ~(1 << data0 | 1 << data1);
-			BANK |=  (0 << data0 | 0 << data1);
-
-		}
-	}
-}
 
 //Function to talk with another device. It uses a standard message dictionary.
 //Note: The device must support the network request are all hell breaks lose.

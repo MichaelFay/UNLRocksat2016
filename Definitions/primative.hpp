@@ -14,8 +14,8 @@ Last Tested:
 
 
 
-#ifndef __NETWORK_H__
-#define __NETWORK_H__ 
+#ifndef __PRIMATIVE_H__
+#define __PRIMATIVE_H__ 
 
 
 /******************************* Includes ************************************/
@@ -53,3 +53,4 @@ Last Tested:
 
 /***************** Global Variables*******************************************/
 
+#endif

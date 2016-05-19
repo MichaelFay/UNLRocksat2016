@@ -4,40 +4,41 @@
 
 Developed By: Michael Fay for Rocksat-X 2016
 
-File Name: 
-Last revised: 
-Version Number:  
+File Name:
+Last revised:
+Version Number:
 
-Tested By:   
-Last Tested: 
+Tested By:
+Last Tested:
 ******************************************************************************/
 
-
+#ifndef __LED_CONNTROLLER_H__
+#define __LED_CONNTROLLER_H__ 
 
 /******************************* Includes ************************************/
-#include <stdint.h>
-#include <stdbool.h>
-
-
-
-#include "packet_def.h"
-#include "log.h"
+#include "bsp.h"
 /*********************** Memory Constants ************************************/
 
 /***************** Macro's and Definitions************************************/
 
-
-/*******************Global Variables******************************************/
+/*******************Global Variables******************************************/																			//network size
 
 
 /*********************** Function Proto's ************************************/
 
+class led_controller
+{
+public:
+	void setLedOn(void * pin_number);
+	void setLedOff(void * pin_number);
 
-//Function to replace printf.
-//print to log if not in PC_DEBUG MODE
+private: 
+	void writeByte(void * byte);
+	void networkWritePacket(IMP * pkt);
+	void bitRecieve();
+};
 
-//function to handle file for log
-
+#endif //protect againest multiple definitions
 /*********************** Note's **********************************************/
 /*
 

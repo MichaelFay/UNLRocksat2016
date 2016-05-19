@@ -18,8 +18,9 @@ Last Tested:
 /******************************* Includes ************************************/
 #include <stdint.h>
 #include <stdbool.h>
-#include "/Users/michaelfay/Desktop/Rocksat/Atmega/328p/device.h"
-
+#include "bsp.h"
+#include "primative.hpp"
+#include "network_io_priv.hpp"
 
 #ifndef __PACKET_DEF_H__
   #include "packet_def.hpp"
@@ -49,11 +50,22 @@ extern uint8_t   master_id;    				  //master id
 extern uint8_t  *network_devices;			  //network devies array
 
 extern uint8_t   network_size ;  				//size of network device array aka
-																				//network size
+												//network size
+
+extern uint8    data_clock_line;	//Pin that the data pins reside on. i.e. P1
+
+extern int8	device_enable;  // device enable pin. If this pin is not high ignore all requests.
+							//if master node define device id = -1
+
+extern uint8   	mm_clock; 	//m2m clock signal for master-master communication
+
+extern uint8  recieved_buffer_size;
+
+
+network_io network; 
+//network_io network; 
 
 /*********************** Function Proto's ************************************/
-
-\\class definitions
 
 
 #endif //protect againest multiple definitions
