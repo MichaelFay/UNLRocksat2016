@@ -1,2 +1,2 @@
-# UNLRocksat2016
-Rocksat 2016 software for the 2016 payload
+# UNL_AIAA
+UNL AIAA common repostitoy for a common library. 
