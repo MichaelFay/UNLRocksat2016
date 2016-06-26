@@ -26,7 +26,7 @@ void init(uint8 * network_type_param)
 
 	_rx_callback_ftn 	= NULL;
 
-	_network_type = network_type_param;
+	_network_type = * network_type_param;
 
 	//setting NERI comm line 0 and 1 as inputs
 	COMM_DDR &= ~( ( 1 << NERI_LINE_0 ) | (1 << NERI_LINE_1) );

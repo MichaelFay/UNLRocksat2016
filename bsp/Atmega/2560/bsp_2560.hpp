@@ -38,6 +38,7 @@
 //TODO: Define TX and RX buffer max
 
 #define MAX_RX_DATA_STREAM 24
+#define MAX_TX_DATA_STREAM 24
 
 #define LED_SHIFT_PORT PORTA
 

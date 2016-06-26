@@ -23,8 +23,7 @@ Last Tested:
 
 /***************** Macro's and Definitions************************************/
 
-/*******************Global Variables******************************************/																			//network size
-
+/*******************Global Variables******************************************/																			
 boolean _byte_full; 
 boolean _packet_full;
 boolean _crc_check_pass;

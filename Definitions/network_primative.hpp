@@ -12,32 +12,30 @@ Tested By:
 Last Tested:
 ******************************************************************************/
 
-#ifndef __LED_CONNTROLLER_H__
-#define __LED_CONNTROLLER_H__ 
+#ifndef __NETWORK_PRIMATIVE__
+#define __NETWORK_PRIMATIVE__
 
 /******************************* Includes ************************************/
-#include "bsp.h"
+#include "primative.hpp"
+
 /*********************** Memory Constants ************************************/
 
 /***************** Macro's and Definitions************************************/
+#define network_type_t8 uint8
 
-/*******************Global Variables******************************************/																			//network size
-
+enum network_transmission_types_t
+{
+	NERI 		= 0,
+	CC1101		= 1,
+	LOG 		= 2,
+	SERIAL		= 3,
+	WIRE 		= 4,
+	SPI 		= 5,
+	UNKNOWN		= 6
+};
+/*******************Global Variables******************************************/
 
 /*********************** Function Proto's ************************************/
-
-class led_controller
-{
-public:
-	void setLedOn(void * pin_number);
-	void setLedOff(void * pin_number);
-	void init();
-
-private: 
-	void writeByte(void * byte);
-	void networkWritePacket(IMP * pkt);
-	void bitRecieve();
-};
 
 #endif //protect againest multiple definitions
 /*********************** Note's **********************************************/

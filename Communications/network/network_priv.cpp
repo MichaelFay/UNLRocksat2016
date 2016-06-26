@@ -26,14 +26,22 @@ extern network_io network;
 
 /***************** Global Variables*******************************************/
 
- boolean        _known_Master;   //private variable to see if we have a known master on the network. 
+boolean        _known_Master;   //private variable to see if we have a known master on the network. 
 
-//Function to set and read on device reg's
-void readMemLocation(void * reg, void * data)
+
+//Function to init network
+void init(netowrk_type_t8 comm_type)
 {
-	//* data = &reg;
-	//* reg = * data; 
-}
+	switch( comm_type )
+	{
+		case NERI:
+			break; 
+			
+		default:
+			break; 
+	}
+} 
+
 
 //Function to define network master
 void defineNetMaster(uint8 * status)
@@ -134,7 +142,7 @@ void getNetworkNodes(void * data, uint8 ptr_size)
 
 #ifdef DEBUG
 //Function to display out all attached network devices
-void printNetwork()
+void printNetworkDebug()
 {
 	uint8 counter;  //declaring loop counter
 	counter = 0;      //init loop counter

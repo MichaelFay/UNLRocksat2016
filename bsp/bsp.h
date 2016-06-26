@@ -4,7 +4,7 @@
 
 Developed By: Michael Fay for Rocksat-X 2016
 
-File Name:
+File Name: bsp.h
 Last revised:
 Version Number:
 
@@ -12,38 +12,36 @@ Tested By:
 Last Tested:
 ******************************************************************************/
 
-#ifndef __LED_CONNTROLLER_H__
-#define __LED_CONNTROLLER_H__ 
+#ifndef __BSP_H__
+#define __BSP_H__
 
 /******************************* Includes ************************************/
-#include "bsp.h"
+
 /*********************** Memory Constants ************************************/
 
 /***************** Macro's and Definitions************************************/
+#ifdef __ARDUINO__
+	#include "Atmega/Arduino.h"
+#endif
 
-/*******************Global Variables******************************************/																			//network size
+#ifdef __ATMEGA_2560__ 
+	#include "Atmega/2560/bsp_2560.hpp"
+#endif
+
+#ifdef __ATMEGA_2560__ 
+	#include "Atmega/2560/bsp_2560.hpp"
+#endif
+
 
 
 /*********************** Function Proto's ************************************/
 
-class led_controller
-{
-public:
-	void setLedOn(void * pin_number);
-	void setLedOff(void * pin_number);
-	void init();
+/***************** Global Variables*******************************************/
 
-private: 
-	void writeByte(void * byte);
-	void networkWritePacket(IMP * pkt);
-	void bitRecieve();
-};
 
-#endif //protect againest multiple definitions
-/*********************** Note's **********************************************/
+#endif 
+
+/*********************** Note's ************************************/
 /*
-
-
-
 
 */
